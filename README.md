@@ -585,6 +585,13 @@ If script tags and event handler attributes are blogged you can try to leverage 
 Exploiting SQL errors  
 if you see SQL errors, they are often not sanitized. This means they are worth checking for reflected xss. This doesn't only apply to SQL specifically but its the context I've seen this most
 
+Exif Data Injection to XSS
+Inject XSS Payloads into Exif data if the form is not sanitized properly
+Use a tool like ExifTool to embed a JavaScript payload in the EXIF metadata of an image.
+```
+exiftool -Title='<img src="x" onerror="alert(\'XSS via EXIF Metadata\')">' image.jpg
+```
+
 Exploiting WebAssembly
 WebAssembly (Wasm) code that includes user input can be manipulated to execute malicious scripts.
 ```
