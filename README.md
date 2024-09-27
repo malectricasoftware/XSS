@@ -77,6 +77,7 @@ When web applications parse JSON data and directly insert it into the DOM withou
 ```
 4.5 Bypassing Filters
 Using techniques like UTF-7 encoding, breaking out of existing tags, or leveraging uncommon payloads.
+utf-7 method does not work against modern browsers
 
 Example UTF-7 Encoding
 ```
