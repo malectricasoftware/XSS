@@ -292,7 +292,8 @@ Altering the case of HTML tags and attributes can bypass filters that are case-s
 <Img sRc=x OnErRoR=alert(1)>
 ```
 Comment Insertion
-Inserting comments within the payload can break up patterns that the filter is looking for.
+Inserting comments within the payload can break up patterns that the filter is looking for.  
+these payloads will no longer execute in modern browers :(
 ```
 <scr<!-- -->ipt>alert(1)</scr<!-- -->ipt>
 ```
